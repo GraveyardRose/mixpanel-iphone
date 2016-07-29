@@ -350,6 +350,7 @@ static const NSUInteger MPMiniNotificationSpacingFromBottom = 10;
         [UIView animateWithDuration:0.1f animations:^{
             self.view.frame = CGRectMake(0.0f, topFrame.size.height - MPNotifHeight, topFrame.size.width, MPNotifHeight * 3.0f);
         } completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"mixpanelInAppMessageReceived" object:nil];
             self->_position = self.view.layer.position;
             [self performSelector:@selector(animateImage) withObject:nil afterDelay:0.1];
             self->_canPan = YES;
